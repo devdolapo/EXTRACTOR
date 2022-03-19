@@ -81,8 +81,10 @@ def is_house(stri):
         return False
 
 def graph_builder(lst):
+    # from graphviz import Source
     malware_name_dot = main.args.gname + ".dot"
     g = Digraph(malware_name_dot, filename = malware_name_dot)
+    # g = Source(malware_name_dot, filename = malware_name_dot, format='pdf')
     g.body.extend(
         ['rankdir="LR"', 'size="9"', 'fixedsize="false"', 'splines="true"', 'nodesep=0.3', 'ranksep=0', 'fontsize=10', 'overlap="scalexy"',
          'engine= "neato"'])
@@ -184,6 +186,10 @@ def graph_builder(lst):
 
             edge_counter += 1
 
-    g.view()
+    # g.view()
+    # saving source code
+    g.format = 'pdf'
+    g.render('Graph', view = True)
+
 
 
